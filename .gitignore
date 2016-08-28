@@ -1,0 +1,13 @@
+
+# Ignore Node & Bower #
+bower_components
+node_modules
+
+# Ignore Web Storm #
+.idea
+
+.tmp
+
+
+
+
