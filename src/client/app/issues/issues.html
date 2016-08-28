@@ -18,9 +18,21 @@
                        typeahead-on-select="vm.searchIssues(1)"
                         >
             </div>
+
             <button type="submit" class="btn btn-default">Search issues</button>
             <i ng-show="loadingRepoNames" class="progress-32"></i>
             <span ng-show="noResults" class="no-results">Repos not found</span>
+
+            <div class="form-group" style="float: right;">
+                <label for="perPage"> Issues per page: </label>
+                <select id="perPage" class="form-control" ng-model="vm.perPageSelect">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+
         </form>
     </div>
 
@@ -54,7 +66,8 @@
         <ul ng-show="vm.totalItemsRoughly > 0" uib-pagination
             total-items="vm.totalItemsRoughly" ng-model="vm.currentPage"
             max-size="vm.maxSize" class="pagination-sm" boundary-link-numbers="true"
-            rotate="false" ng-change="vm.pageChanged()">
+            items-per-page="vm.perPage"
+            rotate="true" force-ellipses="true" ng-change="vm.pageChanged()">
         </ul>
     </div>
 </div>

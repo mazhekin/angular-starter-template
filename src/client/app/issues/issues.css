@@ -1,4 +1,7 @@
-.issues .no-results {
+.issues form {
+  margin-right: 30px;
+}
+.issues form .no-results {
   font-size: small;
   color: #b6b6b6;
 }

@@ -35,7 +35,7 @@
             };
             return apiService.get(progress,
                 API_URLS.reposOwnerRepoIssues.replace(':owner', args.owner).replace(':repo', args.repo),
-                {per_page: 10, page: args.page}
+                {per_page: args.perPage, page: args.page}
             ).then(success)
         }
 

@@ -13,6 +13,7 @@
         vm.totalItemsRoughly = 0;
         vm.currentPage = 1;
         vm.maxSize = 10;
+        vm.perPageSelect = '10';
 
         activate();
 
@@ -32,7 +33,7 @@
         };
 
         vm.searchIssues = function (page) {
-
+            vm.perPage = vm.perPageSelect;
             vm.error = null;
             var success = function(data) {
                 vm.issues = data.issues;
@@ -46,7 +47,8 @@
             var args = {
                 owner: vm.owner,
                 repo: vm.repo,
-                page: page
+                page: page,
+                perPage: parseInt(vm.perPage)
             };
             githubService.getOwnerRepoIssues('shell-progress', args).then(success, error);
         };
