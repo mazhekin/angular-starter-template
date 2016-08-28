@@ -22,18 +22,27 @@
     "angular": "~1.3.13",
     "angular-mocks": "~1.3.13",
     "bootstrap": "~3.3.2",
-    "font-awesome": "~4.3.0",
+    "font-awesome": "^4.6.3",
     "angular-bootstrap": "^2.1.3",
     "angular-ui-router": "ui-router#^0.3.1",
-    "angular-link-header-parser": "^1.0.2"
+    "angular-link-header-parser": "^1.0.2",
+    "moment": "^2.14.1"
   },
-
   "overrides": {
     "angular-link-header-parser": {
       "main": [
         "release/angular-link-header-parser.js"
       ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
+    },
+    "moment": {
+      "main": [
+        "moment.js"
+      ]
     }
   }
-
 }

@@ -20,7 +20,7 @@
             </div>
             <button type="submit" class="btn btn-default">Search issues</button>
             <i ng-show="loadingRepoNames" class="progress-32"></i>
-            <span ng-show="noResults" class="noResults">Repos not found</span>
+            <span ng-show="noResults" class="no-results">Repos not found</span>
         </form>
     </div>
 
@@ -36,9 +36,19 @@
     </div>
 
     <div class="row">
-        <ul>
+        <ul class="issues-results">
             <li ng-repeat="issue in vm.issues">
-                <a ui-sref="issue({owner: vm.owner, repo: vm.repo, number: issue.number})" ng-bind="issue.title"></a>
+                <div class="text">
+                    <i ng-if="issue.state === 'open'" class="state-open fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <a class="title" ui-sref="issue({owner: vm.owner, repo: vm.repo, number: issue.number})" ng-bind="issue.title"></a>
+                    <div class="number-date">
+                        <span ng-bind="'#' + issue.number"></span>
+                        opened <span ng-bind="issue.created_at | myNiceDate"></span>
+                    </div>
+                </div>
+                <a target="_blank" href="{{issue.user.html_url}}">
+                    <img class="avatar" ng-src="{{issue.user.avatar_url}}" uib-tooltip="{{issue.user.login}}" tooltip-placement="left" />
+                </a>
             </li>
         </ul>
         <ul ng-show="vm.totalItemsRoughly > 0" uib-pagination

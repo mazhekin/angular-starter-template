@@ -1,7 +1,51 @@
 .issues {
 
-  .noResults {
+
+
+  .no-results {
     font-size: small;
     color: #b6b6b6;
+  }
+
+  .issues-results {
+    list-style: none;
+    padding-left: 0;
+    margin-right: 30px;
+    li {
+      position: relative;
+      border-left: #cecece solid 1px;
+      border-top: #cecece solid 1px;
+      border-right: #cecece solid 1px;
+      &:last-child { border-bottom: #cecece solid 1px; }
+
+      padding: 10px 15px;
+
+      .text {
+        margin-right: 48px;
+
+        .state-open {
+          margin-right: 6px;
+          color: green;
+        }
+
+        .title {
+          color: #757575;
+          font-weight: bold;
+        }
+        .number-date {
+          color: #959595;
+          font-size: smaller;
+        }
+      }
+
+      .avatar {
+        position: absolute;
+        width: 45px;
+        height: 45px;
+        right: 10px;
+        top: 5px;
+      }
+    }
+
   }
 }

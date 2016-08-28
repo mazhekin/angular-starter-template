@@ -19,7 +19,8 @@
         ////////////////
 
         function activate() {
-
+            vm.owner = 'ng-bootstrap';
+            vm.repo = 'ng-bootstrap';
         }
 
         vm.navigate = function () {
@@ -31,8 +32,6 @@
         };
 
         vm.searchIssues = function (page) {
-            //vm.owner = 'ng-bootstrap';
-            //vm.repo = 'ng-bootstrap';
 
             vm.error = null;
             var success = function(data) {
