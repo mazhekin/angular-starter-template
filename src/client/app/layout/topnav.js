@@ -5,7 +5,7 @@
         .module('app')
         .controller('TopNav', TopNav);
 
-    function TopNav($scope, authService) {
+    function TopNav($scope) {
 
         /*jshint validthis: true */
         var vm = this;
@@ -14,10 +14,5 @@
             vm.user = authUser;
         });
 
-        vm.user = authService.getAuthUser()
-
-        vm.logout = function() {
-            authService.logout();
-        }
     }
 })();

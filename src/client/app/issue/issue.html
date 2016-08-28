@@ -1,3 +1,11 @@
-<div>
-    issue
+<div ng-show="vm.issue !== null">
+    <h1 ng-bind="vm.issue.title"></h1>
+
+</div>
+
+<div class="row">
+    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="vm.error !== null">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong> {{vm.error}}
+    </div>
 </div>

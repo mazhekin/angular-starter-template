@@ -1,3 +1,28 @@
-<div>home</div>
-<button ng-click="vm.navigate()">Issue</button>
+<div class="row">
+    <form class="form-inline" ng-submit="vm.searchIssues()">
+        <div class="form-group">
+            <label for="owner">Owner</label>
+            <input type="text" class="form-control" id="owner" required ng-model="vm.owner">
+        </div>
+        <div class="form-group">
+            <label for="repo">Repo</label>
+            <input type="text" class="form-control" id="repo" required ng-model="vm.repo">
+        </div>
+        <button type="submit" class="btn btn-default">Search issues</button>
+    </form>
+</div>
 
+<div class="row">
+    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="vm.error !== null">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong> {{vm.error}}
+    </div>
+</div>
+
+<div class="row">
+    <ul>
+        <li ng-repeat="issue in vm.issues">
+            <a ui-sref="issue({owner: vm.owner, repo: vm.repo, number: issue.number})" ng-bind="issue.title"></a>
+        </li>
+    </ul>
+</div>
