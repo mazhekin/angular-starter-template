@@ -1,0 +1,30 @@
+.my-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5015;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  background-color: white;
+}
+
+@progress-image-path:  '/images/progress32.gif';
+@progress-image-width:  32; // px
+@progress-image-height:  32; // px
+
+.my-progress div {
+  background-image:  url(@progress-image-path);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  width:  @progress-image-width*1px;
+  height: @progress-image-height*1px;
+  margin-left: (@progress-image-width/2)*(-1px);
+  margin-top: (@progress-image-height/2)*(-1px);
+  top: 50%;
+  left: 50%;
+}

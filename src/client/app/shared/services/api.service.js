@@ -28,7 +28,7 @@
             progressService.on(progress);
             return $http.get(url, {params: obj})
                 .then(successHandler, errorHandler)
-                .finally(function () { progressService.off(progress); });
+                ['finally'](function () { progressService.off(progress); });
         }
 
         function postRequest(progress, url, obj) {

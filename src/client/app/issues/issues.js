@@ -19,6 +19,7 @@
         ////////////////
 
         function activate() {
+
         }
 
         vm.navigate = function () {
@@ -48,7 +49,7 @@
                 repo: vm.repo,
                 page: page
             };
-            githubService.getOwnerRepoIssues(null, args).then(success, error);
+            githubService.getOwnerRepoIssues('shell-progress', args).then(success, error);
         };
 
         vm.getRepoNames = function(val) {
