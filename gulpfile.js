@@ -200,12 +200,12 @@ gulp.task('default', ['serve-dev']);
 
 ////////////////////////
 
-serve = function(cb) {
+function serve (cb) {
     var options, watchFiles;
     require('./src/server/app');
     watchFiles = ['./client/**/*.html', './client/**/*.js', './client/**/*.css'];
     options = {
-        proxy: "localhost:3010/",
+        proxy: 'localhost:3010/',
         port: 3000,
         ghostMode: {
             forms: true,
@@ -224,7 +224,7 @@ serve = function(cb) {
     };
     browserSync.init(options);
     return cb();
-};
+}
 
 function clean(path, done) {
     log('Cleaning: ' + plug.util.colors.blue(path));

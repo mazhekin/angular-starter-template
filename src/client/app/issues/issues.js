@@ -55,9 +55,9 @@
 
         vm.getRepoNames = function(val) {
             var success = function (repoNames) {
-                return repoNames.filter(function(repoName) { return repoName.indexOf(val) !== -1 })
+                return repoNames.filter(function(repoName) { return repoName.indexOf(val) !== -1; });
             };
             return githubService.getUserRepoNames(null, vm.owner).then(success);
-        }
+        };
     }
 })();

@@ -15,4 +15,7 @@
     function appConfig($locationProvider) {
         $locationProvider.html5Mode(true);
     }
+
+    /*jshint validthis: true */
+    angular.module('app').constant('moment', window.moment);
 })();

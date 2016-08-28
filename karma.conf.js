@@ -1,79 +1,57 @@
 // Karma configuration
-// Generated on Wed Feb 18 2015 15:37:18 GMT+0200 (Russia TZ 1 Standard Time)
-
 module.exports = function(config) {
 
     config.set({
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)*/
-      basePath: './src/client',
+        // base path that will be used to resolve all patterns (eg. files, exclude)*/
+        basePath: './src/client',
 
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'sinon'],
+        // frameworks to use
+        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+        frameworks: ['jasmine', 'sinon'],
 
-    // list of files / patterns to load in the browser
-    files: [
-      '../../bower_components/angular/angular.js',
-      '../../bower_components/angular-mocks/angular-mocks.js',
-      '../../bower_components/angular-route/angular-route.js',
-      '../../bower_components/toastr/toastr.js',
+        // list of files / patterns to load in the browser
+        files: [
 
-      './app/app.module.js',
-      './app/core/core.module.js',
-      './app/blocks/exception/exception.module.js',
-      './app/blocks/logger/logger.module.js',
-      './app/blocks/router/router.module.js',
-      './app/dashboard/dashboard.module.js',
-      './app/avengers/avengers.module.js',
-      './app/layout/layout.module.js',
+          './test/specs/**/*.js'
+        ],
 
-      './app/core/config.js',
-      './app/core/constants.js',
-      './app/blocks/router/routehelper.js',
+        // list of files to exclude
+        exclude: [
+        ],
 
-      './app/dashboard/config.route.js',
+        // preprocess matching files before serving them to the browser
+        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        preprocessors: {
+        },
 
-      './test/lib/specHelper.js',
+        // test results reporter to use
+        // possible values: 'dots', 'progress'
+        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+        reporters: ['progress'],
 
-      './test/specs/**/*.js'
-    ],
+        // web server port
+        port: 9876,
 
-    // list of files to exclude
-    exclude: [
-    ],
+        // enable / disable colors in the output (reporters and logs)
+        colors: true,
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
+        // level of logging
+        // possible values:
+        // config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        logLevel: config.LOG_INFO,
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: false,
 
-    // web server port
-    port: 9876,
+        // start these browsers
+        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+        // browsers: ['Chrome', 'ChromeCanary', 'FirefoxAurora', 'Safari', 'PhantomJS'],
+        browsers: ['PhantomJS'],
 
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
-
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-//        browsers: ['Chrome', 'ChromeCanary', 'FirefoxAurora', 'Safari', 'PhantomJS'],
-    browsers: ['PhantomJS'],
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
-  });
+        // Continuous Integration mode
+        // if true, Karma captures browsers, runs the tests and exits
+        singleRun: false
+    });
 };

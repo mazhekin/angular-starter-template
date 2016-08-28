@@ -21,7 +21,8 @@
             var error = function(error) {
                 vm.error = error.statusText;
             };
-            githubService.getOwnerRepoIssueByNumber('shell-progress', $stateParams.owner, $stateParams.repo, $stateParams.number).then(success, error)
+            githubService.getOwnerRepoIssueByNumber('shell-progress',
+                $stateParams.owner, $stateParams.repo, $stateParams.number).then(success, error);
         }
     }
 })();

@@ -12,7 +12,7 @@
             usersUsernameRepos:             '/users/:username/repos'
         };
         Object.getOwnPropertyNames(urls).forEach(function(name) {
-            return urls[name] = root + urls[name];
+            urls[name] = root + urls[name];
         });
         return urls;
     }

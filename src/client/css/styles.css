@@ -2,6 +2,8 @@
   color: red;
 }
 .row {
+  margin-right: 0;
+  margin-left: 0;
   margin-bottom: 10px;
 }
 h1 {

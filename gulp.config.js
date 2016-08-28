@@ -52,9 +52,9 @@ module.exports = function() {
         * Bower and NPM locations
         */
         wiredepDefaultOptions: {
-          bowerJson: require('./bower.json'),
-          directory: './bower_components/',
-          ignorePath: '../..'
+            bowerJson: require('./bower.json'),
+            directory: './bower_components/',
+            ignorePath: '../..'
         },
         packages: [
             './package.json',
