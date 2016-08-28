@@ -1,5 +1,5 @@
 <div class="row">
-    <form class="form-inline" ng-submit="vm.searchIssues()">
+    <form class="form-inline" ng-submit="vm.searchIssues(1)">
         <div class="form-group">
             <label for="owner">Owner</label>
             <input type="text" class="form-control" id="owner" required ng-model="vm.owner">
@@ -24,5 +24,10 @@
         <li ng-repeat="issue in vm.issues">
             <a ui-sref="issue({owner: vm.owner, repo: vm.repo, number: issue.number})" ng-bind="issue.title"></a>
         </li>
+    </ul>
+    <ul ng-show="vm.totalItemsRoughly > 0" uib-pagination
+        total-items="vm.totalItemsRoughly" ng-model="vm.currentPage"
+        max-size="vm.maxSize" class="pagination-sm" boundary-link-numbers="true"
+        rotate="false" ng-change="vm.pageChanged()">
     </ul>
 </div>

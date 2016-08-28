@@ -10,30 +10,45 @@
         vm.error = null;
         vm.issues = [];
 
+        vm.totalItemsRoughly = 0;
+        vm.currentPage = 1;
+        vm.maxSize = 10;
+
         activate();
 
         ////////////////
 
         function activate() {
-            console.log('current state data', $state.current.data);
         }
 
         vm.navigate = function () {
             $state.go('issue');
         };
 
-        vm.searchIssues = function () {
+        vm.pageChanged = function () {
+            vm.searchIssues(vm.currentPage);
+        };
+
+        vm.searchIssues = function (page) {
             vm.owner = 'ng-bootstrap';
             vm.repo = 'ng-bootstrap';
 
             vm.error = null;
             var success = function(data) {
-                vm.issues = data;
+                vm.issues = data.issues;
+                if (data.lastPage) {
+                    vm.totalItemsRoughly = data.lastPage * data.perPage;
+                }
             };
             var error = function(res) {
                 vm.error = res.statusText;
             };
-            githubService.getOwnerRepoIssues(null, vm.owner, vm.repo).then(success, error);
+            var args = {
+                owner: vm.owner,
+                repo: vm.repo,
+                page: page
+            };
+            githubService.getOwnerRepoIssues(null, args).then(success, error);
         }
     }
 })();

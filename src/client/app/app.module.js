@@ -1,7 +1,12 @@
 (function() {
     'use strict';
 
-    angular.module('app', ['ui.bootstrap', 'ui.router']);
+    angular.module('app', [
+        'ui.bootstrap',
+        'ui.router',
+
+        'ig.linkHeaderParser' // angular-link-header-parser
+    ]);
 
     angular
         .module('app')

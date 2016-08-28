@@ -17,7 +17,7 @@
         /////////////////////////////////////////////
 
         function successHandler(result) {
-            return result.data;
+            return result;
         }
 
         function errorHandler(result) {

@@ -24,6 +24,16 @@
     "bootstrap": "~3.3.2",
     "font-awesome": "~4.3.0",
     "angular-bootstrap": "^2.1.3",
-    "angular-ui-router": "ui-router#^0.3.1"
+    "angular-ui-router": "ui-router#^0.3.1",
+    "angular-link-header-parser": "^1.0.2"
+  },
+
+  "overrides": {
+    "angular-link-header-parser": {
+      "main": [
+        "release/angular-link-header-parser.js"
+      ]
+    }
   }
+
 }

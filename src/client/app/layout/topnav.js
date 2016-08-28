@@ -1,9 +1,7 @@
 (function() {
     'use strict';
 
-    angular
-        .module('app')
-        .controller('TopNav', TopNav);
+    angular.module('app').controller('TopNav', TopNav);
 
     function TopNav($scope) {
 
@@ -11,7 +9,6 @@
         var vm = this;
 
         $scope.$on('user-logged-changed', function(event, authUser) {
-            vm.user = authUser;
         });
 
     }
