@@ -4,12 +4,18 @@
     angular.module('app')
         .factory('githubService', githubService);
 
-    function githubService(apiService, API_URLS, linkHeaderParser) {
+    function githubService(apiService, API_URLS, linkHeaderParser, $q) {
         'ngInject';
+
+        var userReposCache = {
+            username: null,
+            repoNames: []
+        };
 
         return {
             getOwnerRepoIssues: getOwnerRepoIssues,
-            getOwnerRepoIssueByNumber: getOwnerRepoIssueByNumber
+            getOwnerRepoIssueByNumber: getOwnerRepoIssueByNumber,
+            getUserRepoNames: getUserRepoNames
         };
 
         /////////////////////////////////////////////
@@ -42,5 +48,20 @@
             ).then(success)
         }
 
+        function getUserRepoNames (progress, username) {
+            var success = function(res) {
+                userReposCache.username = username;
+                userReposCache.repoNames = res.data.map(function(repo) { return repo.name; });
+                return userReposCache.repoNames;
+            };
+            if (userReposCache.username === username) {
+                return $q.when(userReposCache.repoNames);
+            } else {
+                return apiService.get(progress,
+                    API_URLS.usersUsernameRepos.replace(':username', username)
+                ).then(success)
+            }
+
+        }
     }
 })();

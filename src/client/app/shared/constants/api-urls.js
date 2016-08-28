@@ -8,7 +8,8 @@
         var root = configService.apiRoot;
         var urls = {
             reposOwnerRepoIssues:           '/repos/:owner/:repo/issues',
-            reposOwnerRepoIssuesNumber:     '/repos/:owner/:repo/issues/:number'
+            reposOwnerRepoIssuesNumber:     '/repos/:owner/:repo/issues/:number',
+            usersUsernameRepos:             '/users/:username/repos'
         };
         Object.getOwnPropertyNames(urls).forEach(function(name) {
             return urls[name] = root + urls[name];

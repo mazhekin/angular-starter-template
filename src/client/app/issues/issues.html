@@ -1,33 +1,50 @@
-<div class="row">
-    <form class="form-inline" ng-submit="vm.searchIssues(1)">
-        <div class="form-group">
-            <label for="owner">Owner</label>
-            <input type="text" class="form-control" id="owner" required ng-model="vm.owner">
-        </div>
-        <div class="form-group">
-            <label for="repo">Repo</label>
-            <input type="text" class="form-control" id="repo" required ng-model="vm.repo">
-        </div>
-        <button type="submit" class="btn btn-default">Search issues</button>
-    </form>
-</div>
+<div class="issues">
+    <div class="row">
+        <form class="form-inline" ng-submit="vm.searchIssues(1)" autocomplete="off">
+            <div class="form-group">
+                <label for="owner">Owner</label>
+                <input type="text" class="form-control" id="owner" required ng-model="vm.owner">
+            </div>
+            <div class="form-group">
+                <label for="repo">Repo</label>
+                <input type="text"
+                       class="form-control"
+                       id="repo"
+                       required ng-model="vm.repo"
 
-<div class="row">
-    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="vm.error !== null">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Warning!</strong> {{vm.error}}
+                       uib-typeahead="repoName for repoName in vm.getRepoNames($viewValue)"
+                       typeahead-loading="loadingRepoNames"
+                       typeahead-no-results="noResults"
+                       typeahead-on-select="vm.searchIssues(1)"
+                        >
+            </div>
+            <button type="submit" class="btn btn-default">Search issues</button>
+            <i ng-show="loadingRepoNames" class="progress-32"></i>
+            <span ng-show="noResults" class="noResults">Repos not found</span>
+        </form>
     </div>
-</div>
 
-<div class="row">
-    <ul>
-        <li ng-repeat="issue in vm.issues">
-            <a ui-sref="issue({owner: vm.owner, repo: vm.repo, number: issue.number})" ng-bind="issue.title"></a>
-        </li>
-    </ul>
-    <ul ng-show="vm.totalItemsRoughly > 0" uib-pagination
-        total-items="vm.totalItemsRoughly" ng-model="vm.currentPage"
-        max-size="vm.maxSize" class="pagination-sm" boundary-link-numbers="true"
-        rotate="false" ng-change="vm.pageChanged()">
-    </ul>
+    <div class="row">
+        <div class="alert alert-danger alert-dismissible" role="alert" ng-show="vm.error !== null">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Warning!</strong> {{vm.error}}
+        </div>
+        <div class="alert alert-warning alert-dismissible" role="alert" ng-show="vm.issues.length === 0">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Warning!</strong> There is no issues for selected repository.
+        </div>
+    </div>
+
+    <div class="row">
+        <ul>
+            <li ng-repeat="issue in vm.issues">
+                <a ui-sref="issue({owner: vm.owner, repo: vm.repo, number: issue.number})" ng-bind="issue.title"></a>
+            </li>
+        </ul>
+        <ul ng-show="vm.totalItemsRoughly > 0" uib-pagination
+            total-items="vm.totalItemsRoughly" ng-model="vm.currentPage"
+            max-size="vm.maxSize" class="pagination-sm" boundary-link-numbers="true"
+            rotate="false" ng-change="vm.pageChanged()">
+        </ul>
+    </div>
 </div>

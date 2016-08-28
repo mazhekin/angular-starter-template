@@ -8,7 +8,7 @@
         /* jshint validthis: true */
         var vm = this;
         vm.error = null;
-        vm.issues = [];
+        vm.issues = null;
 
         vm.totalItemsRoughly = 0;
         vm.currentPage = 1;
@@ -30,8 +30,8 @@
         };
 
         vm.searchIssues = function (page) {
-            vm.owner = 'ng-bootstrap';
-            vm.repo = 'ng-bootstrap';
+            //vm.owner = 'ng-bootstrap';
+            //vm.repo = 'ng-bootstrap';
 
             vm.error = null;
             var success = function(data) {
@@ -49,6 +49,13 @@
                 page: page
             };
             githubService.getOwnerRepoIssues(null, args).then(success, error);
+        };
+
+        vm.getRepoNames = function(val) {
+            var success = function (repoNames) {
+                return repoNames.filter(function(repoName) { return repoName.indexOf(val) !== -1 })
+            };
+            return githubService.getUserRepoNames(null, vm.owner).then(success);
         }
     }
 })();
