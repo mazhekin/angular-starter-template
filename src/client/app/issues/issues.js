@@ -20,8 +20,8 @@
         ////////////////
 
         function activate() {
-            vm.owner = 'ng-bootstrap';
-            vm.repo = 'ng-bootstrap';
+            //vm.owner = 'ng-bootstrap';
+            //vm.repo = 'ng-bootstrap';
         }
 
         vm.navigate = function () {
