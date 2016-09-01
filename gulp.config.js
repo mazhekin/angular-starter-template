@@ -2,15 +2,15 @@ module.exports = function() {
     var client = './src/client/';
     var clientApp = client + 'app/';
     var root = './';
-    var temp = './.tmp/';
     var server = './src/server/';
+    var bowerComponents = './bower_components/';
+    var build = './build/';
 
     return {
         client: client,
         server: server,
-        temp: temp,
         root: root,
-        build: './build/',
+        build: build,
         deploy: './deploy/',
 
         allJsFiles: [
@@ -31,7 +31,9 @@ module.exports = function() {
             client + 'app/**/*.css'
         ],
 
-        fonts: './bower_components/font-awesome/fonts/**/*.*',
+        fonts: [
+            {from: bowerComponents + 'font-awesome/fonts/*.*', to: build + 'fonts'}
+        ],
         images: client + 'images/**/*.*',
         htmlTemplates: clientApp + '**/*.html',
 

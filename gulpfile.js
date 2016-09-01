@@ -29,7 +29,20 @@ gulp.task('clean-build', function(done) {
     return clean(delConfig, done);
 });
 
-gulp.task('templatecache', ['clean-build'], function () {
+gulp.task('images', ['clean-build', 'copy-index'], function() {
+    log('Copying  the images ' + config.images);
+    return gulp.src(config.images)
+        .pipe(gulp.dest(config.build + 'images'));
+});
+
+gulp.task('fonts', ['images'], function () {
+    log('Copying fonts');
+    config.fonts.forEach(function (font) {
+        gulp.src(font.from).pipe(gulp.dest(font.to));
+    });
+});
+
+gulp.task('templatecache', ['fonts'], function () {
     log('Creating AngularJS $templateCache');
 
     return gulp
