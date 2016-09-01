@@ -201,26 +201,28 @@ gulp.task('default', ['serve-dev']);
 ////////////////////////
 
 function serve (cb) {
-    var options, watchFiles;
     require('./src/server/app');
-    watchFiles = ['./client/**/*.html', './client/**/*.js', './client/**/*.css'];
-    options = {
-        proxy: 'localhost:3010/',
-        port: 3000,
+    var watchFiles = ['./client/**/*.html', './client/**/*.js', './client/**/*.css'];
+    var options = {
+        proxy: 'localhost:3010/', // port is defined in server/server.js
+        port: 3000, // must be 3000 because it allowed on api server (localhost:3000)
         ghostMode: {
             forms: true,
             clicks: true,
             scroll: true,
             location: true
         },
-        browser: ['google chrome'],
+        browser: [
+            'chrome'
+            //'firefox'
+        ],
         files: watchFiles,
         injectChanges: true,
         logFileChanges: true,
         logLevel: 'debug',
         logPrefix: 'test-task',
         reloadDelay: 0,
-        notify: false
+        notify: false // if true - issue for protractor, the hindrance for clicking on login button on landing pag
     };
     browserSync.init(options);
     return cb();

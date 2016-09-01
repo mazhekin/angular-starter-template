@@ -2,6 +2,7 @@
 'use strict';
 
 var express = require('express');
+var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 var compress = require('compression');
@@ -36,17 +37,22 @@ app.get('/ping', function(req, res/*, next*/) {
 });
 
 switch (environment) {
+    case 'dev':
+        console.log('** DEV **');
+        app.use(express.static('./src/client/'));
+        app.use(express.static('./'));
+        app.use(express.static('./tmp'));
+        app.use('/*', express.static('./src/client/index.html'));
+        /*app.get('/*', function (req, res) {
+            return res.sendFile(path.join(__dirname, '../../src/client/index.html'));
+        });*/
+        break;
     case 'build':
         console.log('** BUILD **');
         app.use(express.static('./build/'));
         app.use('/*', express.static('./build/index.html'));
         break;
     default:
-        console.log('** DEV **');
-        app.use(express.static('./src/client/'));
-        app.use(express.static('./'));
-        app.use(express.static('./tmp'));
-        app.use('/*', express.static('./src/client/index.html'));
         break;
 }
 
