@@ -11,6 +11,7 @@ module.exports = function() {
         temp: temp,
         root: root,
         build: './build/',
+        deploy: './deploy/',
 
         allJsFiles: [
             './src/**/*.js',
@@ -25,7 +26,9 @@ module.exports = function() {
           '!' + clientApp + '**/*.spec.js'
         ],
         css: [
-            client + '**/*.css'
+            client + 'css/bootstrap.css',
+            client + 'css/styles.css',
+            client + 'app/**/*.css'
         ],
 
         fonts: './bower_components/font-awesome/fonts/**/*.*',
@@ -38,7 +41,7 @@ module.exports = function() {
         templateCache: {
             file: 'templates.js',
             options: {
-                module: 'app.core',
+                module: 'app',
                 standAlone: false,
                 root: 'app/'
             }

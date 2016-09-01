@@ -2,11 +2,10 @@
 # Ignore Node & Bower #
 bower_components
 node_modules
+build
 
 # Ignore Web Storm #
 .idea
-
-.tmp
 
 src/client/index.html
 
