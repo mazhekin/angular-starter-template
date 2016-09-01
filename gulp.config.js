@@ -18,6 +18,7 @@ module.exports = function() {
         ],
         lessFile: client + 'styles/styles.less',
         index: client + 'index.html',
+        indexDev: client + 'index-dev.html',
         js: [
           clientApp + '**/*.module.js',
           clientApp + '**/*.js',

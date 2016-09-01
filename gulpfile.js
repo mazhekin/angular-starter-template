@@ -191,7 +191,20 @@ gulp.task('serve-build', ['optimize'], function() {
 /**
  * serve the dev environment
  */
-gulp.task('serve-dev', ['inject'], function(done) {
+gulp.task('wiredep-dev', function (done) {
+    wiredep(config);
+    done()
+});
+
+gulp.task('copy-index', ['wiredep-dev'], function (done) {
+    log(config.index);
+    gulp.src(config.indexDev)
+        .pipe(plug.rename('index.html'))
+        .pipe(gulp.dest(config.client));
+    done()
+});
+
+gulp.task('serve-dev',  ['copy-index'], function(done) {
     process.env.NODE_ENV = 'dev';
     serve(done);
 });
@@ -244,4 +257,18 @@ function log(msg) {
     } else {
         plug.util.log(plug.util.colors.blue(msg));
     }
+}
+
+function wiredep(config) {
+    log('Wire up the bower css js and our app js into the html');
+
+    var options = config.wiredepDefaultOptions;
+    var wiredep = require('wiredep').stream;
+
+    return gulp
+        .src(config.index)
+        .pipe(wiredep(options))
+        .pipe(plug.inject(gulp.src(config.css)))
+        .pipe(plug.inject(gulp.src(config.js)))
+        .pipe(gulp.dest(config.client));
 }
